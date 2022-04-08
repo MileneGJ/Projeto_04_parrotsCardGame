@@ -19,6 +19,19 @@ h1{
     align-items: center;
     width:70%;
 }
+.relogio{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    right:0;
+    margin: 5px;
+    padding:5px;
+    color:#75B79E;
+    font-size:15px;
+}
 .carta{
     width:118px;
     height:146px;

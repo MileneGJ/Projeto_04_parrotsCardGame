@@ -2,6 +2,14 @@ let ncartas = prompt("Com quantas cartas quer jogar?");
 while (ncartas % 2 !== 0 || ncartas < 4 || ncartas > 14) {
     ncartas = prompt("Escolha um número par entre 4 e 14!\nCom quantas cartas quer jogar?");
 }
+let tempo = 0;
+function contagemTempo(){
+    tempo++;
+    document.querySelector(".relogio").innerHTML = `<div class="relogio">
+    <p>Tempo de jogo: ${tempo} segundos</p>
+    </div>`;
+}
+let ID = setInterval(contagemTempo,1000);
 const figuras = ["bobrossparrot",
     "explodyparrot",
     "fiestaparrot",
@@ -21,6 +29,9 @@ for (let i = 0; i < (ncartas / 2); i++) {
 }
 figurasEscolhidas.sort(comparador);
 
+document.querySelector(".container").innerHTML += `<div class="relogio">
+<p>Tempo de jogo: ${tempo} segundos</p>
+</div>`
 for (let i = 0; i < ncartas; i++) {
     let mesa = document.querySelector(".container")
     mesa.innerHTML += `<div class="carta" onclick="virarCarta(this)">
@@ -28,6 +39,7 @@ for (let i = 0; i < ncartas; i++) {
     <div class="tras"><img src="./imagens/${figurasEscolhidas[i]}.gif"></div>
 </div>`;
 }
+
 
 
 
@@ -62,6 +74,7 @@ faltantes++;
     }
 }
 if(faltantes===0){
-    alert(`Você ganhou em ${contador} jogadas!`);
+    clearInterval(ID);
+    alert(`Você ganhou em ${contador} jogadas e em ${tempo} segundos!`);
 }
 }
