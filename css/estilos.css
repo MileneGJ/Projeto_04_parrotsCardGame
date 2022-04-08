@@ -20,20 +20,38 @@ h1{
     width:70%;
 }
 .carta{
-    background-color: #A7E9AF;
     width:118px;
     height:146px;
+    margin:18px;
+    position: relative;
+}
+.carta .frente, .carta .tras{
+    width:100%;
+    height:100%;
+    background-color: #A7E9AF;
     border:solid 1px #99CEA8;
     border-radius: 5px;
     box-sizing: border-box;
-    margin:18px;
     display:flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 .carta .tras{
-    display:none;
+    transform: rotateY(180deg);
 }
+
+.card:click .tras {
+    transform: rotateY(0deg);
+}
+
+.card:click .frente {
+    transform: rotateY(-180deg);
+}
+
 .carta img{
     width:100px;
     height:100px;
@@ -42,6 +60,7 @@ h1{
 @media (max-width:600px){
     h1{
         font-size: 36px;
+        width:300px;
         word-wrap: normal;
         text-align: center;
         margin-left:20px;
