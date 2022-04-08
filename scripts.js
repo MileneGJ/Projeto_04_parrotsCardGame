@@ -39,7 +39,7 @@ function virada(element) {
         listIMG[i].parentNode.classList.toggle("frente");
     }
 }
-
+let contador =0
 function virarCarta(element) {
     let cartaVirada = document.querySelector(".virada > .frente > img");
     if (cartaVirada !== null) { cartaVirada = cartaVirada.src }
@@ -53,5 +53,15 @@ function virarCarta(element) {
         element.classList.remove("virada");
         document.querySelector(".virada").classList.remove("virada");
     }
-
+contador ++;
+let faltantes = 0
+let cartasEscondidas = document.querySelectorAll(".frente > img");
+for(i=0;i<cartasEscondidas.length;i++){
+    if(cartasEscondidas[i].src.includes("front.png")){
+faltantes++;
+    }
+}
+if(faltantes===0){
+    alert(`Você ganhou em ${contador} jogadas!`);
+}
 }
